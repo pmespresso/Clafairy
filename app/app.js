@@ -11,6 +11,8 @@ import DropzoneComponent from 'react-dropzone-component';
 import ConversionZone from './components/conversionZone.component';
 
 import Progress from './components/progress.component';
+
+import Footer from './components/footer.component';
 // import Dzone from './components/dropzone.component';
 // import AppContainer from './containers/app.container';
 
@@ -23,18 +25,25 @@ class App extends React.Component {
 
     render() {
         return (
-        	<div>
-        		<Instructions />
 
-        		<DropzoneComponent config={{ iconFiletypes: ['.jpg', '.png', '.gif'],
-        									 showFiletypeIcon: true
-										   }}/>
+        	<div className="clafairy">
+	        	<div className="wrapper">
+	        		<Instructions />
 
-				<ConversionZone />
+	        		<DropzoneComponent config={{ iconFiletypes: ['.jpg', '.png', '.gif'],
+	        									 showFiletypeIcon: true
+											   }}/>
 
-				<Progress />
+					<ConversionZone />
 
-        	</div>
+					<Progress />
+					
+
+					
+					<Footer />
+
+	        	</div>
+	        </div>
         );
     }
 }

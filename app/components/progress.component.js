@@ -7,7 +7,6 @@ class Progress extends React.Component {
 
 		return(
 
-			<div className="container-fluid">
 				<div className="progress">
 					<span className="conversion__time-elapsed">{this.props.elapsed}</span>
 
@@ -15,7 +14,6 @@ class Progress extends React.Component {
 
 					<span className="converstion__time-total">{this.props.total}</span>
 				</div>
-			</div>
 		);
 	}
 }
