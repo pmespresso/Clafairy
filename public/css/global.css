@@ -1,0 +1,62 @@
+/* Box sizing resets*/
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+/* Body resets and fancy font*/
+body{
+  font-family: 'Exo 2', sans-serif;
+}
+
+h1, h2, h3, h4, h5, p {
+	text-align: center;
+	padding: 10px;
+	margin: 10px;
+}
+
+/* instructions component */
+.instructions #intro {
+	font-size: 30px;
+}
+
+
+
+/* dropzone component */
+.dropzone {
+	border: 6px dotted black;
+	width: 100%;
+	height: 400px;
+	display: block;
+	overflow-y: scroll;	
+}
+
+
+/* conversionZone component */
+
+.conversionZone {
+	display: inline-block;
+	position: relative;
+	width: 100%;
+}
+
+.conversionZone #convertButton {
+	float: right;
+	padding: 10px auto;
+	margin: 10px 26px;
+}
+
+/* progress component */
+
+.progress {
+	display: inline-block;
+	clear: both;
+	width: 100%;
+}
+
+/* renamedZone component */
+
+
+/* footer component */
+
+
+
