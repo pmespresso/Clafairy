@@ -12,6 +12,10 @@ import ConversionZone from './components/conversionZone.component';
 
 import Progress from './components/progress.component';
 
+import RenamedZone from './components/renamedZone.component';
+
+import NextStepsZone from './components/nextStepsZone.component';
+
 import Footer from './components/footer.component';
 // import Dzone from './components/dropzone.component';
 // import AppContainer from './containers/app.container';
@@ -38,7 +42,9 @@ class App extends React.Component {
 
 					<Progress />
 					
+					<RenamedZone />	
 
+					<NextStepsZone />
 					
 					<Footer />
 
