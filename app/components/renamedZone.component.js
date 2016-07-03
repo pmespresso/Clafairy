@@ -6,7 +6,7 @@ class RenamedZone extends React.Component {
 
 		return (
 			<div className="renamedZone">
-	
+				
 			</div>
 		);
 	}

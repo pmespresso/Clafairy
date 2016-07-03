@@ -23,6 +23,6 @@
     "react-autocomplete": "^1.0.0-rc2",
     "react-dom": "^0.14.7",
     "clarifai": "^1.2.1",
-    "react-dropzone-component": "^1.0.4"
+    "react-dropzone": "^2.0.0"
   }
 }

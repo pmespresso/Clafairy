@@ -1,39 +1,23 @@
 import React from 'react';
 
-import DropzoneComponent from 'react-dropzone-component';
+import Dropzone from 'react-dropzone';
 
 class Dzone extends React.Component {
 
-	componentConfig() {
-		const config: {
-			iconFiletypes: ['.jpg', '.png', '.gif'],
-		    showFiletypeIcon: true
-		}
-
-		return config;
-	}
-
-
-
-
-
-
-
-
-
+	onDrop (files) {
+      console.log('Received files: ', files);
+    }
 
 	render() {
 
 		return (
-
-			<div className="dzone">
-				<DropzoneComponent 
-						config={this.componentConfig.bind(this)} 
-						action="uploads.js" 
-						eventHandlers={eventHandlers}
-	                    djsConfig={djsConfig}/>
-	        </div>
+			<div className="dropzone">
+				<Dropzone onDrop={this.onDrop}>
+	              <div>Try dropping some files here, or click to select files to upload.</div>
+	            </Dropzone>
+			</div>
 		);
+
 	}
 }
 
