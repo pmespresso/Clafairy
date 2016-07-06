@@ -4,21 +4,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Instructions from './components/instructions.component';
+import AppContainer from './containers/app.container';
 
-// import DropzoneComponent from 'react-dropzone-component';
+// import Dzone from './components/dropzone.component';
 
-import Dzone from './components/dropzone.component';
+// import ConversionZone from './components/conversionZone.component';
 
-import ConversionZone from './components/conversionZone.component';
+// import Progress from './components/progress.component';
 
-import Progress from './components/progress.component';
+// import RenamedZone from './components/renamedZone.component';
 
-import RenamedZone from './components/renamedZone.component';
+// import NextStepsZone from './components/nextStepsZone.component';
 
-import NextStepsZone from './components/nextStepsZone.component';
-
-import Footer from './components/footer.component';
+// import Footer from './components/footer.component';
 // import AppContainer from './containers/app.container';
 
 // Search component created as a class
@@ -33,20 +31,7 @@ class App extends React.Component {
 
         	<div className="clafairy">
 	        	<div className="wrapper">
-	        		<Instructions />
-
-	        		<Dzone />
-
-					<ConversionZone />
-
-					<Progress />
-					
-					<RenamedZone />	
-
-					<NextStepsZone />
-					
-					<Footer />
-
+	        		<AppContainer />
 	        	</div>
 	        </div>
         );
