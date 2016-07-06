@@ -9,10 +9,12 @@ class AppContainer extends React.Component {
 	  super(props);
 	
 	  this.state = {
+	  	numberOfFilesToUpload: 0,
 	  	filesUploaded: []
 	  }
 
 	  this.onDrop = this.onDrop.bind(this);
+	  // this.onOpenClick = this.onOpenClick.bind(this);
 
 	}
 
@@ -24,7 +26,12 @@ class AppContainer extends React.Component {
 
 	}
 
+	// onOpenClick() {
+	// 	this.refs.dropzone.open();
+	// }
+
 	onDrop (files) {
+	  this.setState({ numberOfFilesToUpload: files.length });
       this.setState({ filesUploaded: files });
       console.log(this.state.filesUploaded);
     }
