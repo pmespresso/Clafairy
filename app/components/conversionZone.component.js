@@ -3,12 +3,21 @@ import React from 'react';
 class ConversionZone extends React.Component {
 
 
+	readyFiles() {
+
+	}
+
+	prepareUrl() {
+
+	}
+
+
 	render() {
 
 		return(
 
 			<div className="conversionZone">
-				<button className="btn btn-lg btn-success" id="convertButton">Convert!</button>
+				<button className="btn btn-lg" id="convertButton" onClick={this.readyFiles} >Convert!</button>
 			</div>
 
 		);

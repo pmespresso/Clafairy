@@ -1,6 +1,8 @@
 import React from 'react';
 
 import Dropzone from 'react-dropzone';
+import ConversionZone from './conversionZone.component';
+import Progress from './progress.component';
 
 class Dzone extends React.Component {
 
@@ -21,9 +23,10 @@ class Dzone extends React.Component {
 						: 
 						null
 					  }
+					  
 		            </Dropzone>
 				</div>
-
+					<ConversionZone />
 			</section>
 		);
 	}
