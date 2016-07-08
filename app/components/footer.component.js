@@ -9,7 +9,10 @@ class Footer extends React.Component {
 
 				<div className="push"></div>
 			 	<div className="footer">
-					<p>Copyright (c) 2016</p>
+			 		<hr />
+					<p className="center">Copyright (c) 2016</p>
+					<a href="#"><p className="left">Built With Clarifai</p></a>
+					<a href="#"><p className="right">Upgrade To Pro</p></a>
 				</div>
 			</div>
 		);
