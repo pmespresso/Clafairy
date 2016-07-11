@@ -6,16 +6,6 @@ import Progress from './progress.component';
 
 class Dzone extends React.Component {
 
-	readyFiles() {
-		let first_file = this.props.filesUploaded[0];
-		let path = first_file.path;
-
-		console.log(path);
-		//get path of file
-		//prepare url
-		//post
-    }
-
 	render() {
 
 		return (
@@ -42,8 +32,9 @@ class Dzone extends React.Component {
 					  }
 					  
 		            </Dropzone>
+		            <ConversionZone readyFiles={this.props.readyFiles} />
 				</div>
-					<ConversionZone readyFiles={this.readyFiles.bind(this)}/>
+					
 			</section>
 		);
 	}

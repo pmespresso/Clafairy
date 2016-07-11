@@ -2,9 +2,7 @@ import React from 'react';
 
 import Clarifai from 'clarifai';
 
-import Axios from 'axios';
-
-import ClientOAuth2 from 'client-oauth2';
+var Keys = require('./keys');
 
 import Instructions from '../components/instructions.component';
 import DZone from '../components/dropzone.component';
@@ -31,9 +29,12 @@ class AppContainer extends React.Component {
 	  }
 
 	  this.onDrop = this.onDrop.bind(this);
+	  this.imageToDataUrl = this.imageToDataUrl.bind(this);
+	  this.getTagsByImageBytes = this.getTagsByImageBytes.bind(this);
+	  this.readyFiles = this.readyFiles.bind(this);
 	  // this.onOpenClick = this.onOpenClick.bind(this);
-	  this.CLIENT_ID = "P13CldYplZrOqLN955yeXOKTc2iV0WiKiPfhB2x7";
-	  this.CLIENT_SECRET = "sbnB_lTqFVCvRPBrYNfhod5AtnETpy1_szMhAwSP";
+	  this.CLIENT_ID = Keys.CLIENT_ID;
+	  this.CLIENT_SECRET = Keys.CLIENT_SECRET;
 
 	}
 
@@ -48,51 +49,87 @@ class AppContainer extends React.Component {
 	// 	this.refs.dropzone.open();
 	// }
 
-	convertImageToBytes(image) {
-		return ""
+	readyFiles() {
+		// for each file, get tags by image bytes
+		let files = this.state.filesUploaded;
+		for (var i=0; i < files.length; i++) {
+			let path = files[i].path;
+			this.getTagsByImageBytes(path);	
+		}
 	}
 
-	getTagsByImageBytes(image) {
+	imageToDataUrl(filePath){
+	  return new Promise(function(resolve, reject) {
+	    var img = new Image();
+	    img.crossOrigin = 'Anonymous';
+	    img.onload = function() {
+	      var canvas = document.createElement('canvas');
+	      var ctx = canvas.getContext('2d');
+	      canvas.height = this.height;
+	      canvas.width = this.width;
+	      ctx.drawImage(this, 0, 0);
+	      var dataURL = canvas.toDataURL("image/jpeg", 0.9);
+	      resolve(dataURL);
+	    };
+	    img.src = filePath;
+	  });
+	}
+
+	getTagsByImageBytes(filePath) {
 		// Clarifai.getTagsByUrl('https://samples.clarifai.com/wedding.jpg').then(
 		//   this.handleResponse,
 		//   this.handleError
 		// );
 
-		Clarifai.getTagsByImageBytes().then(
-		  this.handleResponse,
-		  this.handleError
+		let _this = this;
+
+		this.imageToDataUrl(filePath).then(
+		  function(dataURL){
+		        var b64 = dataURL.split('base64,')[1];
+		    Clarifai.getTagsByImageBytes(b64).then(
+		      function(resp){
+		        console.log('success', resp);
+		        _this.renameThatFile(resp, filePath);
+		      },
+		      function(resp){
+		        console.log('error', resp); 
+		      });
+		    }
 		);
 	}
 
 
+	renameThatFile(resp, src) {
+		var tags = resp.results[0].result.tag.classes;
+		var newName = tags.join("_");
+		console.log(newName);
+
+
+	}
+
+	
 	handleResponse(response){
 	  console.log('promise response:', JSON.stringify(response));
-	};
+	}
 
 	handleError(err){
 	  console.log('promise error:', err);
-	};
+	}
 	
 
 	onDrop(files) {
-			
 		this.setState(function(state) {
 			return {
 				filesUploaded: state.filesUploaded.concat(files)
 			}
 		});
-
-
     }
-
-
-
 
 	render() {
 		return (
 			<section>
 				<Instructions />
-				<DZone onDrop={this.onDrop} filesUploaded={this.state.filesUploaded} />
+				<DZone onDrop={this.onDrop} filesUploaded={this.state.filesUploaded} readyFiles={this.readyFiles} />
 
 				<Footer />
 			</section>
